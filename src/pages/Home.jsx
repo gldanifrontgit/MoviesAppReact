@@ -1,3 +1,4 @@
+import { MovieGrid } from "../components/movieGrid/movieGrid";
 export const Home = () => {
-  return <div>Home</div>;
+  return <MovieGrid />;
 };
