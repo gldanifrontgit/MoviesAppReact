@@ -67,6 +67,80 @@ body {
   margin-bottom: 12px;
 }
 
+.sidebar-section + .sidebar-section {
+  margin-top: 24px;
+}
+
+.sidebar-section-title {
+  color: #1f1f2e;
+  font-size: 18px;
+}
+
+.sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 6px;
+  color: inherit;
+  text-decoration: none;
+  transition: background 160ms ease;
+}
+
+.sidebar-item:hover {
+  background: #f4f4f6;
+}
+
+.sidebar-item-poster {
+  width: 44px;
+  aspect-ratio: 2 / 3;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #ececf0;
+}
+
+.sidebar-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-item-title {
+  overflow: hidden;
+  color: #1f1f2e;
+  font-size: 14px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-item-meta {
+  margin-top: 4px;
+  color: #6c6c78;
+  font-size: 12px;
+}
+
+.sidebar-progress {
+  height: 5px;
+  margin-top: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e8e8ec;
+}
+
+.sidebar-progress-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: #f5c518;
+}
+
 main {
   flex: 1;
   padding: 16px;
@@ -151,6 +225,141 @@ main {
   font-weight: 700;
 }
 
+/* Movie details */
+.movie-details-back {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #6c6c78;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.movie-details-back:hover {
+  color: #1f1f2e;
+}
+
+.movie-details-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #1f1f2e;
+  color: #fff;
+}
+
+.movie-details-backdrop {
+  position: absolute;
+  inset: -40px;
+  background-position: center;
+  background-size: cover;
+  filter: blur(30px) brightness(0.45);
+  transform: scale(1.1);
+}
+
+.movie-details-content {
+  position: relative;
+  display: flex;
+  gap: 32px;
+  padding: 32px;
+}
+
+.movie-details-poster {
+  width: 260px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #2c2c3e;
+  box-shadow: 0 16px 40px rgb(0 0 0 / 45%);
+}
+
+.movie-details-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.movie-details-title {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.movie-details-year {
+  color: rgb(255 255 255 / 60%);
+  font-weight: 400;
+}
+
+.movie-details-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.movie-details-rating {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #f5c518;
+  color: #1f1f2e;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.movie-details-rating small {
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.movie-details-chip {
+  padding: 6px 12px;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 10%);
+  font-size: 14px;
+}
+
+.movie-details-subtitle {
+  margin-top: 28px;
+  margin-bottom: 8px;
+  color: #f5c518;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.movie-details-overview {
+  max-width: 60ch;
+  color: rgb(255 255 255 / 85%);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.movie-details-progress {
+  max-width: 360px;
+  margin-top: 28px;
+}
+
+.movie-details-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgb(255 255 255 / 75%);
+}
+
+.movie-details-progress .sidebar-progress {
+  height: 6px;
+  background: rgb(255 255 255 / 20%);
+}
+
+.movie-details-empty {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.movie-details-empty h2 {
+  margin-bottom: 12px;
+}
+
 /* Footer */
 .footer {
   padding: 16px 24px;
@@ -166,6 +375,27 @@ main {
 
   .sidebar {
     width: 100%;
+  }
+
+  .movie-details-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .movie-details-poster {
+    width: 180px;
+    align-self: center;
+  }
+
+  .movie-details-title {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .movie-details-stats {
+    justify-content: center;
   }
 
   .movie-grid {

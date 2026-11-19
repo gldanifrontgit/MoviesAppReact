@@ -4,6 +4,8 @@ import { MovieCard } from "../movieCard/movieCard";
 
 export const MovieGrid = () => {
   const [searchWord, setSearchWord] = useState("");
+  // const [rating, setRating] = useState(0);
+  // const [releaseYear, setReleaseYear] = useState(0);
   function searchItem(e) {
     console.log(e.target.value);
     setSearchWord(e.target.value);
