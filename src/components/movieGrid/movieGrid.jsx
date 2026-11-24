@@ -2,7 +2,10 @@ import { useState } from "react";
 import { movies } from "../../data/movies";
 import { MovieCard } from "../movieCard/movieCard";
 
-export const MovieGrid = () => {
+export const MovieGrid = ({
+  movieList = movies,
+  title = "View All Movies",
+}) => {
   const [searchWord, setSearchWord] = useState("");
   // const [rating, setRating] = useState(0);
   // const [releaseYear, setReleaseYear] = useState(0);
@@ -11,14 +14,14 @@ export const MovieGrid = () => {
     setSearchWord(e.target.value);
   }
 
-  const filteredMovies = movies.filter((item) =>
+  const filteredMovies = movieList.filter((item) =>
     item.title.toLowerCase().startsWith(searchWord.toLowerCase()),
   );
 
   return (
     <section className="movie-library">
       <div className="movie-top">
-        <h1 className="movie-library-title">View All Movies</h1>
+        <h1 className="movie-library-title">{title}</h1>
         <form action="">
           <input
             value={searchWord}
