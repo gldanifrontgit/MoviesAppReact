@@ -1,19 +1,16 @@
-import { useState, useEffect } from "react";
 import { MovieGrid } from "../components/movieGrid/movieGrid";
+import { useFavourites } from "../context/FavouritesContext.jsx";
+import { movies } from "../data/movies";
 
 export const Favorites = () => {
-  const [favMovies, setFavMovies] = useState([]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("my_favs");
-    if (saved) {
-      setFavMovies(JSON.parse(saved));
-    }
-  }, []);
+  const { favourites } = useFavourites();
+  const favouriteMovies = movies.filter((movie) =>
+    favourites.includes(movie.id),
+  );
 
   return (
     <div>
-      <MovieGrid movieList={favMovies} title="My Favourite Movies" />
+      <MovieGrid movieList={favouriteMovies} title="My Favourite Movies" />
     </div>
   );
 };

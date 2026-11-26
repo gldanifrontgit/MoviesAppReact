@@ -1,32 +1,19 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useFavourites } from "../../context/FavouritesContext.jsx";
+
 export const MovieCard = ({ singleMovie }) => {
-  let [isInFavorites, setIsInFavorites] = useState("Add to Favorites");
-
-  function handleFavorites() {
-    const saved = localStorage.getItem("my_favs");
-    let favMovies = saved ? JSON.parse(saved) : [];
-
-    const isIncuded = favMovies.some((movie) => movie.id === singleMovie.id);
-
-    if (!isIncuded) {
-      const updatedFavs = [...favMovies, singleMovie];
-      localStorage.setItem("my_favs", JSON.stringify(updatedFavs));
-      alert("Movie added to favorites!");
-    } else {
-      setIsInFavorites("Remove from Favorites");
-      alert("Movie is already in favorites!");
-    }
-  }
+  const { isFavourite, toggleFavourite } = useFavourites();
 
   return (
     <article className="movie-card">
       <button
         className="movie-card-favorite"
         type="button"
-        onClick={handleFavorites}
+        onClick={() => toggleFavourite(singleMovie)}
       >
-        {isInFavorites}
+        {isFavourite(singleMovie)
+          ? "Remove from Favorites"
+          : "Add to Favorites"}
       </button>
       <Link to={`/movie/${singleMovie.id}`} className="movie-card-poster-link">
         <img

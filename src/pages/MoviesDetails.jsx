@@ -1,8 +1,10 @@
 import { Link, useParams } from "react-router";
 import { movies } from "../data/movies";
 import { continueWatching } from "../data/continueWatching";
+import { useFavourites } from "../context/FavouritesContext.jsx";
 
 export const MoviesDetails = () => {
+  const { isFavourite, toggleFavourite } = useFavourites();
   const { id } = useParams();
   const movie = movies.find((m) => m.id === parseInt(id));
 
@@ -36,7 +38,14 @@ export const MoviesDetails = () => {
           className="movie-details-backdrop"
           style={{ backgroundImage: `url(${movie.poster_path})` }}
         />
-
+        <button
+          className="movie-card-favorite"
+          type="button"
+          style={{ position: "relative", zIndex: 1 }}
+          onClick={() => toggleFavourite(movie)}
+        >
+          {isFavourite(movie) ? "Remove from Favorites" : "Add to Favorites"}
+        </button>
         <div className="movie-details-content">
           <img
             className="movie-details-poster"

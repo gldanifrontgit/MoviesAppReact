@@ -10,19 +10,24 @@ export const MovieGrid = ({
   // const [rating, setRating] = useState(0);
   // const [releaseYear, setReleaseYear] = useState(0);
   function searchItem(e) {
-    console.log(e.target.value);
     setSearchWord(e.target.value);
   }
 
-  const filteredMovies = movieList.filter((item) =>
-    item.title.toLowerCase().startsWith(searchWord.toLowerCase()),
-  );
+  const normalizedSearch = searchWord.trim().toLowerCase();
+  const filteredMovies = movieList.filter((item) => {
+    const title = String(item?.title ?? "").toLowerCase();
+    return title.includes(normalizedSearch);
+  });
 
   return (
     <section className="movie-library">
       <div className="movie-top">
         <h1 className="movie-library-title">{title}</h1>
-        <form action="">
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+        >
           <input
             value={searchWord}
             onChange={searchItem}

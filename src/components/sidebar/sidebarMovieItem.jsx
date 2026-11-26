@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { HeartOutlined } from "@ant-design/icons";
 
 export const SidebarMovieItem = ({ movie, progress }) => {
+  function addTofavorite(e) {
+    e.preventDefault();
+    alert("added");
+  }
   return (
     <li>
       <Link to={`/movie/${movie.id}`} className="sidebar-item">
@@ -27,6 +32,9 @@ export const SidebarMovieItem = ({ movie, progress }) => {
               <p className="sidebar-item-meta">{progress}% watched</p>
             </>
           )}
+          <span className="sidebar-item-favorite" type="button">
+            <HeartOutlined onClick={addTofavorite} />
+          </span>
         </div>
       </Link>
     </li>
